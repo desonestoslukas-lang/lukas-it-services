@@ -6,7 +6,7 @@
         "ram": "16 GB RAM",
         "ssd": "512 GB grosser SSD-Speicher",
         "price": "450.-",
-        "image": "fa-laptop"
+        "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80"
     },
     {
         "brand": "Dell",
@@ -15,7 +15,7 @@
         "ram": "8 GB RAM",
         "ssd": "256 GB SSD",
         "price": "290.-",
-        "image": "fa-desktop"
+        "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80"
     },
     {
         "brand": "HP",
@@ -24,6 +24,6 @@
         "ram": "16 GB RAM",
         "ssd": "512 GB SSD",
         "price": "380.-",
-        "image": "fa-laptop-code"
+        "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80"
     }
 ]

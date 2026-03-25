@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const cardHTML = `
                             <div class="glass-card product-card reveal" ${delayStyle}>
                                 <div class="product-image">
-                                    <i class="fas ${item.image}"></i>
+                                    <img src="${item.image}" alt="${item.brand} ${item.model}">
                                 </div>
                                 <div class="product-content">
                                     <h3 class="product-title">${item.brand} ${item.model}</h3>
