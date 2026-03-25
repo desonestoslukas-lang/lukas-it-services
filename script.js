@@ -252,16 +252,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             
-            btn.innerHTML = '<span>Gesendet!</span> <i class="fas fa-check"></i>';
-            btn.style.background = 'var(--accent-green)';
-            btn.style.color = 'var(--bg-dark)';
+            // Formulardaten auslesen
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
             
-            setTimeout(() => {
-                form.reset();
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.style.color = '';
-            }, 3000);
+            // Ladeanimation auf Button
+            btn.innerHTML = '<span>Wird gesendet...</span> <i class="fas fa-spinner fa-spin"></i>';
+            
+            // Daten an Formsubmit senden
+            fetch("https://formsubmit.co/ajax/Lukas_Walti@sluz.ch", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Name: data.name,
+                    Email: data.email,
+                    Betreff: data.subject,
+                    Nachricht: data.message,
+                    _subject: "Neue Anfrage über deine IT-Website!"
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Bei Erfolg: Erfolgsanimation
+                btn.innerHTML = '<span>Gesendet!</span> <i class="fas fa-check"></i>';
+                btn.style.background = 'var(--accent-green)';
+                btn.style.color = 'var(--bg-dark)';
+                
+                setTimeout(() => {
+                    form.reset();
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 4000);
+            })
+            .catch(error => {
+                console.error("Fehler beim Senden:", error);
+                btn.innerHTML = '<span>Fehler beim Senden</span> <i class="fas fa-times"></i>';
+                btn.style.background = '#FF5F56';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 3000);
+            });
         });
     }
 });
