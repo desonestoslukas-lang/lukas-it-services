@@ -1,5 +1,7 @@
+let allInventory = [];
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Setup Scroll Reveal Observer (so we can reuse it for dynamic content)
+    // 1. Setup Scroll Reveal Observer
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -16,58 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
     
-    // Observe existing static elements
-    const staticRevealElements = document.querySelectorAll('.reveal');
-    staticRevealElements.forEach(el => revealObserver.observe(el));
+    // Beobachte statische Elemente
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // 2. Fetch and Render Inventory Dynamically
     const hardwareContainer = document.getElementById('hardware-container');
+    const filterButtons = document.querySelectorAll('.filter-btn');
     
     if (hardwareContainer) {
-        // Künstliche Verzögerung, um die Loading-Skeletons zu demonstrieren
-        // Kann in Produktion entfernt werden
         setTimeout(() => {
             fetch('inventory.json')
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Netzwerkantwort war nicht ok');
-                    }
+                    if (!response.ok) throw new Error('Netzwerkantwort war nicht ok');
                     return response.json();
                 })
                 .then(inventory => {
-                    // Skeletons entfernen
-                    hardwareContainer.innerHTML = '';
-                    
-                    // Produkte rendern
-                    inventory.forEach((item, index) => {
-                        const delay = index * 100;
-                        const delayStyle = delay > 0 ? `style="transition-delay: ${delay}ms;"` : '';
-                        
-                        const cardHTML = `
-                            <div class="glass-card product-card reveal" ${delayStyle}>
-                                <div class="product-image">
-                                    <img src="${item.image}" alt="${item.brand} ${item.model}">
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title">${item.brand} ${item.model}</h3>
-                                    <ul class="product-specs">
-                                        <li><i class="fas fa-microchip text-accent"></i> ${item.cpu}</li>
-                                        <li><i class="fas fa-memory text-accent"></i> ${item.ram}</li>
-                                        <li><i class="fas fa-hdd text-accent"></i> ${item.ssd}</li>
-                                    </ul>
-                                    <div class="product-footer">
-                                        <span class="product-price">CHF ${item.price}</span>
-                                        <a href="#contact" class="btn btn-secondary">Details anfragen</a>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        hardwareContainer.insertAdjacentHTML('beforeend', cardHTML);
-                    });
-                    
-                    // Neue Elemente für Scroll-Animation registrieren
-                    const newRevealElements = hardwareContainer.querySelectorAll('.reveal');
-                    newRevealElements.forEach(el => revealObserver.observe(el));
+                    allInventory = inventory;
+                    renderInventory('all');
                 })
                 .catch(error => {
                     console.error('Fehler beim Laden des Inventars:', error);
@@ -76,21 +43,183 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800); // 800ms Delay für Skelett-Ansicht
     }
 
-    // 3. Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    function renderInventory(filterBrand) {
+        if (!hardwareContainer) return;
+        hardwareContainer.innerHTML = '';
+        
+        const filtered = filterBrand === 'all' 
+            ? allInventory 
+            : allInventory.filter(item => item.brand.toLowerCase() === filterBrand.toLowerCase());
+            
+        if (filtered.length === 0) {
+            hardwareContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">Derzeit keine Angebote für diese Marke verfügbar.</div>';
+            return;
+        }
+            
+        filtered.forEach((item, index) => {
+            const delay = index * 100;
+            const delayStyle = delay > 0 ? `style="transition-delay: ${delay}ms;"` : '';
+            
+            const cardHTML = `
+                <div class="glass-card product-card reveal" ${delayStyle}>
+                    <div class="product-image">
+                        <img src="${item.image}" alt="${item.brand} ${item.model}">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${item.brand} ${item.model}</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip text-accent"></i> ${item.cpu}</li>
+                            <li><i class="fas fa-memory text-accent"></i> ${item.ram}</li>
+                            <li><i class="fas fa-hdd text-accent"></i> ${item.ssd}</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-price">CHF ${item.price}</span>
+                            <button class="btn btn-secondary details-btn" data-id="${item.id}">Mehr erfahren</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            hardwareContainer.insertAdjacentHTML('beforeend', cardHTML);
+        });
+        
+        // Modal-Buttons verknüpfen
+        document.querySelectorAll('.details-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(e.target.getAttribute('data-id'));
+                openModal(id);
+            });
+        });
+        
+        // Scroll Animationen neu zuweisen
+        document.querySelectorAll('#hardware-container .reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    // Filter Logik
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            filterButtons.forEach(b => {
+                b.classList.remove('active');
+                b.style.borderColor = 'rgba(255,255,255,0.2)';
+                b.style.background = 'transparent';
+                b.style.color = 'var(--text-main)';
+            });
+            
+            e.target.classList.add('active');
+            e.target.style.borderColor = 'var(--accent-cyan)';
+            e.target.style.background = 'rgba(0,229,255,0.1)';
+            e.target.style.color = 'var(--accent-cyan)';
+            
+            const filter = e.target.getAttribute('data-filter');
+            renderInventory(filter);
+        });
+    });
+
+    // 3. Modal Logik
+    const modal = document.getElementById('product-modal');
+    const modalDetails = document.getElementById('modal-details');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    function openModal(id) {
+        const item = allInventory.find(i => i.id === id);
+        if (!item || !modalDetails) return;
+        
+        // Subjekt Dropdown vorbereiten für Contact Form
+        const subjectSelect = document.getElementById('subject');
+        if(subjectSelect) {
+            subjectSelect.value = 'hardware';
+        }
+        const messageTextA = document.getElementById('message');
+        if(messageTextA) {
+            messageTextA.value = `Hallo Lukas, ich interessiere mich für das Gerät: ${item.brand} ${item.model} (ID: ${item.id}). Ist es noch verfügbar?`;
+        }
+        
+        modalDetails.innerHTML = `
+            <div class="modal-grid">
+                <div class="modal-image">
+                    <img src="${item.image}" alt="${item.brand} ${item.model}">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title">${item.brand} ${item.model}</h2>
+                    <span class="modal-price">CHF ${item.price}</span>
+                    <p class="modal-description">${item.description}</p>
+                    
+                    <ul class="product-specs" style="margin-bottom: 2.5rem;">
+                        <li><i class="fas fa-microchip text-accent"></i> <strong>CPU:</strong> ${item.cpu}</li>
+                        <li><i class="fas fa-memory text-accent"></i> <strong>RAM:</strong> ${item.ram}</li>
+                        <li><i class="fas fa-hdd text-accent"></i> <strong>Speicher:</strong> ${item.ssd}</li>
+                        <li><i class="fas fa-desktop text-accent"></i> <strong>Display:</strong> ${item.screen}</li>
+                        <li><i class="fas fa-gamepad text-accent"></i> <strong>Grafik:</strong> ${item.gpu}</li>
+                        <li><i class="fas fa-clipboard-check text-accent"></i> <strong>Zustand:</strong> ${item.condition}</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-primary btn-large trigger-contact" style="width: 100%;">Jetzt anfragen <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        `;
+        
+        modal.style.display = 'block';
+        // Kurzer Timer für CSS transition
+        setTimeout(() => modal.classList.add('show'), 10);
+        
+        // Schliessen bei Klick auf anfragen
+        document.querySelector('.trigger-contact').addEventListener('click', closeModal);
+    }
+
+    function closeModal() {
+        if(modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
         }
     });
 
-    // 4. Mobile menu toggle
+    // 4. FAQ Accordion Logik
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Alle schliessen
+                faqItems.forEach(faq => faq.classList.remove('active'));
+                
+                // Dieses öffnen, falls es nicht schon offen war
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
+
+    // 5. Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // 6. Mobile menu toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
-    if (mobileBtn) {
+    if (mobileBtn && navLinks) {
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = mobileBtn.querySelector('i');
@@ -102,22 +231,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add('fa-bars');
             }
         });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
     }
 
-    // Close mobile menu when clicking a link
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const icon = mobileBtn.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    });
-
-    // 5. Form submission
+    // 7. Form submission
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {

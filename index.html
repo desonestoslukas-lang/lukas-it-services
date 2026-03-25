@@ -128,6 +128,13 @@
                     <p class="section-subtitle">Nachhaltige Technik zum fairen Preis. Alle Geräte sind professionell gereinigt, geprüft und sofort einsatzbereit.</p>
                 </div>
                 
+                <div class="offers-filter" id="hardware-filter" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <button class="btn btn-secondary filter-btn active" data-filter="all" style="border-color: var(--accent-cyan); background: rgba(0,229,255,0.1); color: var(--accent-cyan);">Alle</button>
+                    <button class="btn btn-secondary filter-btn" data-filter="Lenovo">Lenovo</button>
+                    <button class="btn btn-secondary filter-btn" data-filter="Dell">Dell</button>
+                    <button class="btn btn-secondary filter-btn" data-filter="HP">HP</button>
+                </div>
+                
                 <div class="offers-grid" id="hardware-container">
                     <!-- Loading Skeletons -->
                     <div class="glass-card product-card skeleton-card">
@@ -219,6 +226,45 @@
                                 <h4 class="stat-number">Lösungen</h4>
                                 <p class="stat-label">Massgeschneidert</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq section-padding" id="faq">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Häufig gestellte <span class="accent">Fragen</span></h2>
+                    <p class="section-subtitle">Alles, was du über meine Dienstleistungen und den Ablauf wissen musst.</p>
+                </div>
+                <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item glass-card reveal">
+                        <div class="faq-question">
+                            <h3>Wie läuft ein Hardware-Kauf ab?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Schreib mir einfach eine Nachricht oder kontaktiere mich über WhatsApp. Wir klären kurz deine Anforderungen, und danach kannst du das Gerät entweder bei mir abholen oder ich versende es sicher verpackt an dich.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item glass-card reveal" style="transition-delay: 100ms;">
+                        <div class="faq-question">
+                            <h3>Gibt es Garantie auf aufbereitete Geräte?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ja, auf alle Refurbished-Geräte gebe ich standardmässig eine 30-tägige Funktionsgarantie. Sollte in dieser Zeit ein Hardware-Defekt auftreten, kümmere ich mich kostenlos um die Reparatur oder einen Austausch. Software- und physische Schäden durch Stürze sind hiervon ausgenommen.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item glass-card reveal" style="transition-delay: 200ms;">
+                        <div class="faq-question">
+                            <h3>Wie lange dauert es, bis eine Website fertig ist?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Das hängt ganz vom Umfang ab. Eine kleine, professionelle Präsenzweite wie diese hier (One-Pager) setze ich meist innerhalb von 1-2 Wochen für dich um. Nach einem kurzen Erstgespräch kann ich dir einen genauen Zeitrahmen nennen.</p>
                         </div>
                     </div>
                 </div>
@@ -322,9 +368,9 @@
                 <div class="footer-legal">
                     <h3>Rechtliches</h3>
                     <ul>
-                        <li><a href="#">Impressum</a></li>
-                        <li><a href="#">Datenschutz</a></li>
-                        <li><a href="#">AGB</a></li>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="agb.html">AGB</a></li>
                     </ul>
                 </div>
             </div>
@@ -333,6 +379,23 @@
             </div>
         </div>
     </footer>
+
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal">&times;</span>
+            <div id="modal-details">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button (Zurzeit deaktiviert - entferne die <!-- und --> tags, um ihn wieder zu aktivieren) -->
+    <!--
+    <a href="https://wa.me/41790000000" class="whatsapp-float reveal" target="_blank" rel="noopener noreferrer" aria-label="Chatte mit uns auf WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    -->
 
     <script src="script.js"></script>
 </body>

@@ -854,6 +854,169 @@ ul {
     font-size: 0.875rem;
 }
 
+/* FAQ Section */
+.faq-item {
+    margin-bottom: 1rem;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.faq-question {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.faq-question i {
+    color: var(--accent-cyan);
+    transition: transform 0.4s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 2rem;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 2rem 1.5rem;
+    max-height: 300px;
+    opacity: 1;
+}
+
+.faq-answer p {
+    color: var(--text-muted);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    margin: 5% auto;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-muted);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--accent-cyan);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.modal-image {
+    padding: 2rem;
+}
+
+.modal-image img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.modal-info {
+    padding: 2rem 2rem 2rem 0;
+}
+
+.modal-title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.modal-description {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.6);
+    color: #FFF;
+}
+
 /* Animations Reveal */
 .reveal {
     opacity: 0;
@@ -922,5 +1085,17 @@ ul {
     
     .hero-actions {
         flex-direction: column;
+    }
+    
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-info {
+        padding: 1rem 2rem 2rem;
+    }
+    
+    .modal-image {
+        padding: 2rem 2rem 0 2rem;
     }
 }

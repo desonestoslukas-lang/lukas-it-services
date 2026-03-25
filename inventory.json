@@ -1,29 +1,44 @@
 [
     {
+        "id": 1,
         "brand": "Lenovo",
         "model": "ThinkPad X1 Carbon",
         "cpu": "Intel Core i7 (8. Gen)",
         "ram": "16 GB RAM",
         "ssd": "512 GB grosser SSD-Speicher",
         "price": "450.-",
-        "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80"
+        "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
+        "description": "Das ThinkPad X1 Carbon besticht durch sein ultraleichtes Gehäuse und die hervorragende Tastatur. Ein Premium-Begleiter für alle, die viel unterwegs sind und keine Abstriche bei der Leistung machen wollen.",
+        "gpu": "Intel UHD Graphics 620",
+        "screen": "14 Zoll Full HD (1920x1080), matt",
+        "condition": "Klasse A (Hervorragend) – Minimale Gebrauchsspuren"
     },
     {
+        "id": 2,
         "brand": "Dell",
         "model": "OptiPlex 7060 Micro",
         "cpu": "Intel Core i5 (8. Gen)",
         "ram": "8 GB RAM",
         "ssd": "256 GB SSD",
         "price": "290.-",
-        "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80"
+        "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80",
+        "description": "Dieser Mini-PC von Dell bietet volle Desktop-Leistung im extrem kompakten Format. Perfekt für den Schreibtisch zu Hause oder als leiser Office-Rechner am Arbeitsplatz.",
+        "gpu": "Intel UHD Graphics 630",
+        "screen": "Nicht enthalten (Desktop-PC)",
+        "condition": "Klasse A/B (Sehr gut) – Leichte Kratzer am Gehäuse möglich"
     },
     {
+        "id": 3,
         "brand": "HP",
         "model": "EliteBook 840 G5",
         "cpu": "Intel Core i5 (8. Gen)",
         "ram": "16 GB RAM",
         "ssd": "512 GB SSD",
         "price": "380.-",
-        "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80"
+        "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
+        "description": "Das HP EliteBook vereint ein massgeschneidertes, edles Aluminiumgehäuse mit starker Leistung und umfassenden Sicherheitsfunktionen. Ein absolut verlässlicher Spitzenreiter im Business-Bereich.",
+        "gpu": "Intel UHD Graphics 620",
+        "screen": "14 Zoll Full HD (1920x1080), IPS, entspiegelt",
+        "condition": "Klasse A (Hervorragend) – Keine bis kaum sichtbare Spuren"
     }
 ]
