@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lukas IT-Services: Hardware-Refurbishment und Webdesign für KMU und Privatpersonen in der Schweiz.">
+    <title>Lukas IT-Services | Hardware-Refurbishment & Webdesign</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">Lukas<span class="accent">IT</span>-Services</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#services">Dienstleistungen</a>
+                <a href="#angebote">Angebote</a>
+                <a href="#about">Über mich</a>
+                <a href="#contact" class="btn btn-primary">Kontakt aufnehmen</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menü umschalten">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge">ICT-Fachmann i.A.</div>
+                    <h1 class="hero-title">Deine IT in<br><span class="accent-gradient">guten Händen</span></h1>
+                    <h2 class="hero-subtitle">Hardware-Refurbishment & Webdesign vom Fachmann</h2>
+                    <p class="hero-text">
+                        ICT-Fachmann i.A. bietet zuverlässige Lösungen für Hardware-Refurbishment und moderne Webauftritte. Für KMU und Privatpersonen in der Schweiz.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#services" class="btn btn-primary btn-large">Dienstleistungen ansehen</a>
+                        <a href="#contact" class="btn btn-secondary btn-large">Projekt besprechen</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glass-card main-glass-card">
+                        <div class="card-header">
+                            <div class="dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <i class="fas fa-server accent-icon"></i>
+                            <h3>System Status</h3>
+                            <div class="status-bar"><div class="progress"></div></div>
+                            <p>Alle Systeme laufen zuverlässig.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card floating-card-1">
+                        <i class="fas fa-code"></i>
+                        <span>Clean Code</span>
+                    </div>
+                    <div class="glass-card floating-card-2">
+                        <i class="fas fa-tools"></i>
+                        <span>Hardware Fix</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section-padding" id="services">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Meine <span class="accent">Dienstleistungen</span></h2>
+                    <p class="section-subtitle">Massgeschneiderte IT-Lösungen für deine individuellen Anforderungen. Professionell, schnell und zuverlässig.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3 class="service-title">Hardware-Refurbishment</h3>
+                        <p class="service-desc">
+                            Ankauf, Reparatur und Verkauf von Notebooks und PCs. Nachhaltig, kosteneffizient und leistungsstark für den Alltag.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check text-accent"></i> Diagnose & Reparatur</li>
+                            <li><i class="fas fa-check text-accent"></i> Aufbereitung (Refurbishing)</li>
+                            <li><i class="fas fa-check text-accent"></i> Verkauf von Gebrauchtgeräten</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card reveal" style="transition-delay: 100ms;">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="service-title">Webdesign</h3>
+                        <p class="service-desc">
+                            Erstellung von modernen, schnellen und responsiven Webseiten. Der perfekte digitale Auftritt für kleine Unternehmen.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check text-accent"></i> Modernes UI/UX Design</li>
+                            <li><i class="fas fa-check text-accent"></i> Mobile First (Responsive)</li>
+                            <li><i class="fas fa-check text-accent"></i> SEO-Optimierung</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section class="offers section-padding" id="angebote">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Top-aufbereitete <span class="accent">Hardware</span></h2>
+                    <p class="section-subtitle">Nachhaltige Technik zum fairen Preis. Alle Geräte sind professionell gereinigt, geprüft und sofort einsatzbereit.</p>
+                </div>
+                
+                <div class="offers-grid" id="hardware-container">
+                    <!-- Loading Skeletons -->
+                    <div class="glass-card product-card skeleton-card">
+                        <div class="product-image skeleton"></div>
+                        <div class="product-content">
+                            <h3 class="product-title skeleton skeleton-text"></h3>
+                            <ul class="product-specs">
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                            </ul>
+                            <div class="product-footer" style="border-top: none;">
+                                <span class="product-price skeleton skeleton-text skeleton-text-short" style="width: 40%; margin: 0;"></span>
+                                <div class="skeleton skeleton-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skeleton 2 -->
+                    <div class="glass-card product-card skeleton-card">
+                        <div class="product-image skeleton"></div>
+                        <div class="product-content">
+                            <h3 class="product-title skeleton skeleton-text"></h3>
+                            <ul class="product-specs">
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                            </ul>
+                            <div class="product-footer" style="border-top: none;">
+                                <span class="product-price skeleton skeleton-text skeleton-text-short" style="width: 40%; margin: 0;"></span>
+                                <div class="skeleton skeleton-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skeleton 3 -->
+                    <div class="glass-card product-card skeleton-card">
+                        <div class="product-image skeleton"></div>
+                        <div class="product-content">
+                            <h3 class="product-title skeleton skeleton-text"></h3>
+                            <ul class="product-specs">
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                                <li class="skeleton skeleton-text skeleton-text-short"></li>
+                            </ul>
+                            <div class="product-footer" style="border-top: none;">
+                                <span class="product-price skeleton skeleton-text skeleton-text-short" style="width: 40%; margin: 0;"></span>
+                                <div class="skeleton skeleton-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-visual reveal">
+                        <div class="about-image-wrapper">
+                            <div class="about-shape"></div>
+                            <div class="placeholder-img">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                        </div>
+                        <div class="experience-badge">
+                            <span class="number">100%</span>
+                            <span class="text">Leidenschaft</span>
+                        </div>
+                    </div>
+                    <div class="about-content reveal">
+                        <h2 class="section-title">Über <span class="accent">mich</span></h2>
+                        <h3 class="about-subtitle">Von der Faszination zur Profession.</h3>
+                        <p class="about-text">
+                            Hallo! Ich heisse Lukas und absolviere derzeit meine Lehre als ICT-Fachmann. Technik ist für mich mehr als nur ein Beruf – es ist meine absolute Leidenschaft.
+                        </p>
+                        <p class="about-text">
+                            Diese Begeisterung nutze ich jeden Tag, um anderen bei ihren IT-Herausforderungen zu helfen. Egal, ob es darum geht, einem alten Laptop neues Leben einzuhauchen, ein komplexes Netzwerkproblem zu lösen oder einen ansprechenden Webauftritt zu gestalten – ich packe jedes Projekt mit grossem Engagement und Fachwissen an.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <h4 class="stat-number">Technik</h4>
+                                <p class="stat-label">Begeistert</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="stat-number">Kunden</h4>
+                                <p class="stat-label">Fokussiert</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="stat-number">Lösungen</h4>
+                                <p class="stat-label">Massgeschneidert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Lass uns <span class="accent">zusammenarbeiten</span></h2>
+                    <p class="section-subtitle">Hast du ein Projekt im Kopf oder brauchst du dringend IT-Support? Schreib mir eine Nachricht!</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <div class="info-card">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-details">
+                                <h3>E-Mail</h3>
+                                <p>hallo@lukas-it-services.ch</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-details">
+                                <h3>Standort</h3>
+                                <p>Schweiz (Region Platzhalter)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="icon-box">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-details">
+                                <h3>Verfügbarkeit</h3>
+                                <p>Nach Vereinbarung</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-wrapper reveal" style="transition-delay: 100ms;">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="email" placeholder="deine.email@beispiel.ch" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Betreff</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>Bitte wählen...</option>
+                                    <option value="hardware">Hardware-Refurbishment</option>
+                                    <option value="webdesign">Webdesign</option>
+                                    <option value="other">Sonstiges</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Nachricht</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Wie kann ich dir helfen?" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <span>Nachricht senden</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Lukas<span class="accent">IT</span>-Services</span>
+                    <p class="footer-desc">Dein zuverlässiger Partner für IT & Web in der Schweiz.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#services">Dienstleistungen</a></li>
+                        <li><a href="#about">Über mich</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h3>Rechtliches</h3>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lukas IT-Services. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
