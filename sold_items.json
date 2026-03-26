@@ -1,0 +1,23 @@
+[
+    {
+        "id": 101,
+        "brand": "Apple",
+        "model": "MacBook Pro 13\"",
+        "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80",
+        "success_story": "Reinigung, Einbau einer schnellen 1TB SSD und komplette Systemoptimierung durchgeführt. Gerät läuft wieder schnell und leise."
+    },
+    {
+        "id": 102,
+        "brand": "Lenovo",
+        "model": "ThinkPad T480s",
+        "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
+        "success_story": "Display-Scharnier repariert, frische Wärmeleitpaste aufgetragen und an ein lokales KMU für das Homeoffice verkauft."
+    },
+    {
+        "id": 103,
+        "brand": "HP",
+        "model": "ProDesk 600 G4",
+        "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80",
+        "success_story": "Alte HDD gegen eine moderne SSD geklont und RAM erweitert. Leistet nun als leiser und effizienter Familien-PC beste Dienste."
+    }
+]

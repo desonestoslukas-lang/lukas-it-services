@@ -114,6 +114,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 2.5 Fetch and Render References Dynamically
+    const refContainer = document.getElementById('references-container');
+    if (refContainer) {
+        setTimeout(() => {
+            fetch('sold_items.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Netzwerkantwort war nicht ok');
+                    return response.json();
+                })
+                .then(items => {
+                    refContainer.innerHTML = '';
+                    items.forEach((item, index) => {
+                        const delay = index * 100;
+                        const delayStyle = delay > 0 ? `style="transition-delay: ${delay}ms;"` : '';
+                        
+                        const cardHTML = `
+                            <div class="glass-card product-card reveal" ${delayStyle}>
+                                <div class="product-image">
+                                    <img src="${item.image}" alt="${item.brand} ${item.model}">
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">${item.brand} ${item.model}</h3>
+                                    <div style="flex-grow: 1;">
+                                        <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                            <i class="fas fa-check-circle text-accent" style="margin-top: 4px;"></i>
+                                            <span>${item.success_story}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        refContainer.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                    
+                    document.querySelectorAll('#references-container .reveal').forEach(el => revealObserver.observe(el));
+                })
+                .catch(error => {
+                    console.error('Fehler beim Laden der Referenzen:', error);
+                    refContainer.innerHTML = '<div class="error-msg" style="grid-column: 1/-1; text-align: center; padding: 2rem;">Referenzen konnten nicht geladen werden.</div>';
+                });
+        }, 800);
+    }
+
     // 3. Modal Logik
     const modal = document.getElementById('product-modal');
     const modalDetails = document.getElementById('modal-details');
